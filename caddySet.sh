@@ -63,23 +63,36 @@ function upgrade_caddy {
 
 function enable_autostart {
     echo "添加Caddy到开机启动... Adding Caddy to autostart..."
-    if [[ $(systemctl --version) ]]; then  # Check if the system uses systemd
-        systemctl enable caddy
-    elif [[ -d /etc/init.d ]]; then  # Check if the system uses init.d
-        sudo update-rc.d caddy defaults
-    fi
+    echo "[Unit]
+Description=Caddy Web Server
+Documentation=https://caddyserver.com/docs/
+After=network.target
+
+[Service]
+ExecStart=$CADDY_BIN run --config $CADDY_CONFIG
+ExecReload=$CADDY_BIN reload --config $CADDY_CONFIG
+TimeoutStopSec=5s
+LimitNOFILE=1048576
+LimitNPROC=512
+User=caddy
+Group=caddy
+
+[Install]
+WantedBy=multi-user.target" | sudo tee /etc/systemd/system/caddy.service > /dev/null
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable caddy.service
     echo "Caddy已添加到开机启动. Caddy has been added to autostart."
 }
 
 function disable_autostart {
     echo "从开机启动中移除Caddy... Removing Caddy from autostart..."
-    if [[ $(systemctl --version) ]]; then
-        systemctl disable caddy
-    elif [[ -d /etc/init.d ]]; then
-        sudo update-rc.d -f caddy remove
-    fi
+    sudo systemctl disable caddy.service
+    sudo rm /etc/systemd/system/caddy.service
+    sudo systemctl daemon-reload
     echo "Caddy已从开机启动中移除. Caddy has been removed from autostart."
 }
+
 
 function display_log {
     tail -f $LOG_FILE
