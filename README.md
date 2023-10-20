@@ -17,24 +17,24 @@ This script offers a simplified way to manage your Caddy server. You can control
 
 ## 使用 Usage
 
-1. 将脚本保存为 `caddy_manager.sh`。
+1. 将脚本保存为 `caddySet.sh`。
 2. 给脚本执行权限：
     ```bash
-    chmod +x caddy_manager.sh
+    chmod +x caddySet.sh
     ```
 3. 运行脚本并按照提示操作：
     ```bash
-    ./caddy_manager.sh
+    ./caddySet.sh
     ```
 
-1. Save the script as `caddy_manager.sh`.
+1. Save the script as `caddySet.sh`.
 2. Give execute permission to the script:
     ```bash
-    chmod +x caddy_manager.sh
+    chmod +x caddySet.sh
     ```
 3. Run the script and follow the prompts:
     ```bash
-    ./caddy_manager.sh
+    ./caddySet.sh
     ```
 
 ## 命令行参数 Command Line Arguments
