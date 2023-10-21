@@ -81,10 +81,6 @@ Running the script with the `man` argument will display help information:
 - pgrep
 
 Ensure that these dependencies are installed and available on your system.
-
----
-
-Please adjust this README file according to your specific needs and environment.
 ------
 # Caddy 管理脚本
 
