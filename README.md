@@ -1,3 +1,91 @@
+# Caddy Management Script
+
+This script provides a convenient way to manage the [Caddy](https://caddyserver.com/) service, including starting, stopping, restarting, reloading configurations, checking status, and more. The script also supports logging to keep track of the Caddy service's activities.
+
+## Features
+
+- **Start Caddy**: Starts the Caddy service and redirects output to a log file.
+- **Stop Caddy**: Stops the Caddy service.
+- **Restart Caddy**: Restarts the Caddy service.
+- **Reload Configuration**: Reloads the Caddy configuration file.
+- **Check Status**: Checks whether the Caddy service is running.
+- **Logging**: Saves operations and Caddy output to a log file.
+- **Reset Paths**: Resets the saved paths for Caddy binary and configuration file.
+- **Real-Time Log Display**: Displays Caddy log output in real-time.
+- **Help**: Displays help information.
+
+## Usage
+
+You can use this script in two ways:
+
+### 1. Interactive Menu
+
+Running the script without any arguments will enter an interactive menu, where you can select the operation to perform:
+
+```bash
+./caddy_script.sh
+```
+
+### 2. Command Line Arguments
+
+You can directly perform a specific operation by providing an argument:
+
+```bash
+./caddy_script.sh start
+./caddy_script.sh stop
+./caddy_script.sh restart
+./caddy_script.sh reload
+./caddy_script.sh check
+./caddy_script.sh resetPath
+./caddy_script.sh log
+./caddy_script.sh man
+```
+
+## Configuration
+
+On the first run, the script will attempt to automatically find the paths for the Caddy binary and configuration file. If it cannot find them, it will prompt you to enter these paths manually. This information will be saved in a hidden file in the same directory as the script for future use.
+
+## Logging
+
+All operations and Caddy's output will be logged to a file. The log files are located in a `log` folder in the script's directory and are named by date.
+
+## Reset Paths
+
+If you need to change the path of Caddy or its configuration file, you can use the `resetPath` command to reset these settings:
+
+```bash
+./caddy_script.sh resetPath
+```
+
+## View Logs
+
+You can use the `log` command to view Caddy's log output in real-time:
+
+```bash
+./caddy_script.sh log
+```
+
+## Get Help
+
+Running the script with the `man` argument will display help information:
+
+```bash
+./caddy_script.sh man
+```
+
+## Dependencies
+
+- Bash
+- Caddy
+- coreutils (provides `date` and `find` commands)
+- pgrep
+
+Ensure that these dependencies are installed and available on your system.
+
+---
+
+Please adjust this README file according to your specific needs and environment.
+------
 # Caddy 管理脚本
 
 这个脚本提供了一个方便的方式来管理 [Caddy](https://caddyserver.com/) 服务，包括启动、停止、重启、重新加载配置、检查状态等功能。脚本还支持日志记录，以便跟踪Caddy服务的运行情况。
